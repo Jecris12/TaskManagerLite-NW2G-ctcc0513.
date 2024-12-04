@@ -59,13 +59,13 @@ public class TaskManagerLite {
         frame.setSize(600, 400);
         frame.setLayout(new BorderLayout());
 
-        // Task list panel
+      
         taskList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         taskList.setCellRenderer(new TaskRenderer());
         JScrollPane taskScrollPane = new JScrollPane(taskList);
         frame.add(taskScrollPane, BorderLayout.CENTER);
 
-        // Button panel
+ 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
         JButton addButton = new JButton("Add Task");
         JButton editButton = new JButton("Edit Task");
@@ -77,16 +77,9 @@ public class TaskManagerLite {
         buttonPanel.add(markCompleteButton);
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Add Task action
         addButton.addActionListener(e -> addTask());
-
-        // Edit Task action
         editButton.addActionListener(e -> editTask());
-
-        // Delete Task action
         deleteButton.addActionListener(e -> deleteTask());
-
-        // Mark Completed action
         markCompleteButton.addActionListener(e -> markTaskCompleted());
 
         frame.setVisible(true);
