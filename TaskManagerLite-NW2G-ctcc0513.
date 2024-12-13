@@ -110,6 +110,7 @@ public class TaskManagerLite {
             Task task = new Task(title, description, dueDate);
             tasks.add(task);
             SwingUtilities.invokeLater(() -> taskListModel.addElement(task));
+            showReminder(task);
         }
     }
 
@@ -143,6 +144,7 @@ public class TaskManagerLite {
 
             task.update(title, description, dueDate);
             SwingUtilities.invokeLater(() -> taskListModel.setElementAt(task, selectedIndex));
+            showReminder(task);
         }
     }
 
@@ -165,6 +167,10 @@ public class TaskManagerLite {
         Task task = tasks.get(selectedIndex);
         task.markCompleted();
         SwingUtilities.invokeLater(() -> taskListModel.setElementAt(task, selectedIndex));
+    }
+
+    private void showReminder(Task task) {
+        JOptionPane.showMessageDialog(null, "Reminder:\n" + task.getTitle() + " is due on " + task.getDueDate(), "Task Reminder", JOptionPane.INFORMATION_MESSAGE);
     }
 
     static class TaskRenderer extends DefaultListCellRenderer {
